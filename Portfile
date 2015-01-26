@@ -1,0 +1,18 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+PortSystem 1.0
+name httpdump
+version 1.0
+categories net
+platforms darwin
+maintainers sroy \
+    rhythmnetworks.com:sroy
+description Create HTTP conversations by sniffing network interfaces or reading from pcap files. \
+	long_description httpdump captures HTTP conversations ie Request/Reply pairs by \
+	listening to network interfaces, or by reading a previously captured \
+	trace in libpcap format.
+homepage http://twiki.rnmd.net/Engineering/SumitRoy/HTTPDump
+master_sites file:///Users/sroy/ports/net/httpdump
+checksums sha256 076bca6008ea9d670a62d205f71728b67587ded06e54e168090cd4809988fc85
+depends_lib port:apr \
+    port:libpcap

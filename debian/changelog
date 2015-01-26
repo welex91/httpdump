@@ -1,0 +1,11 @@
+httpdump (1.0.1) unstable; urgency=low
+
+  * Fix buggy handling of tcpdump filters.
+
+ -- Sumit Roy <sroy@rhythmnewmedia.com>  Mon, 11 Nov 2013 15:00:16 -0700
+httpdump (1.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Sumit Roy <sroy@rhythmnewmedia.com>  Tue, 29 Oct 2013 15:00:16 -0700
+

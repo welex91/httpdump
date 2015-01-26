@@ -1,0 +1,42 @@
+Summary: Capture HTTP conversations
+Name: @PACKAGE_NAME@
+Version: @PACKAGE_VERSION@
+Release: 1
+License: GPL
+Group: Applications/Internet
+URL: http://www.hpl.hp.com/research/linux/httperf/
+
+Source: @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+
+BuildRequires: apr-devel e2fsprogs-devel libpcap-devel
+Requires: apr e2fsprogs libpcap
+
+%description
+httpdump captures HTTP conversations ie Request/Reply pairs by
+listening to network interfaces, or by reading a previously captured
+trace in libpcap format.
+
+%prep
+%setup -q
+
+%build
+%configure \
+    --program-prefix="%{?_program_prefix}"
+%{__make} %{?_smp_mflags}
+
+%install
+%{__rm} -rf %{buildroot}
+%{__make} install DESTDIR="%{buildroot}"
+
+%clean
+%{__rm} -rf %{buildroot}
+
+%files
+%defattr(-, root, root, 0755)
+%doc README 
+%_mandir/man8/httpdump.8.gz
+%{_bindir}/httpdump
+
+%changelog
+

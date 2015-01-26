@@ -1,0 +1,20 @@
+Source: httpdump
+Section: contrib/net
+Priority: optional
+Maintainer: Sumit Roy <sroy@rhythmnewmedia.com>
+Build-Depends: debhelper (>= 8.0.0), dh-autoreconf, libpcap0.8-dev, libapr1-dev
+Standards-Version: 3.9.3
+Homepage: http://twiki.rnmd.net/twiki/bin/view/Engineering/HTTPDump
+#Vcs-Git: git://git.debian.org/collab-maint/httpdump.git
+Vcs-Browser: http://source.rhythmnetworks.com/websvn/listing.php?repname=RhythmQa&path=%2Fhttpdump-1.0%2F&#a47064df48e72291969b324c852c2895b
+
+Package: httpdump
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Create HTTP conversations by sniffing network interfaces.
+ Analogous to tcpdump, re-construct HTTP conversations by sniffing network
+ interfaces or by reading a previously captured packet trace in libpcap format.
+ .
+ HTTPDump was written from scratch in ANSI C, and uses libapr for some 
+ convenient data structures (e.g. hash tables), and the libpcap library for 
+ managing network device access and capture.
