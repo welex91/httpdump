@@ -1,0 +1,15 @@
+**/Makefile
+**/Makefile.in
+**/.deps/
+**.o
+autom4te.cache/
+compile
+config.h
+config.h.in
+config.log
+config.status
+configure
+httpdump.spec
+src/test_parser
+src/httpdump
+stamp-h1
