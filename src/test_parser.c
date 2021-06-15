@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "parser.h"
 #include "http_conversation.h"
 
 int
@@ -37,6 +38,7 @@ int
 test1()
 {
     char request[] = "GET /coreservices/getAds?cl=3&appId=tmzus_iphone&mt=display&pl=inpage&w=320&h=50&delivery=xml&t=a14ae24ace1b2b7 HTTP/1.1\r\nHost: 10.100.60.14:8080\r\nAccept-Language: en-us\r\nX-rnmd-timezone: America/New_York\r\nAccept-Encoding: gzip\r\nUser-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_2 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11A501\r\nAccept: */*\r\nX-rnmd-networktype: 3G\r\nuser: SYN_IOS0.0.0.0.lZeflZWflZWflZWflZWflZU_vSnax_tmzus_iphone_70.192.67.128\r\nX-rnmd-don: /cMT7h9Cyhib4wq6HSmQsu9DifN+BZeZxZ5ajcZkQno=\r\nX-rnmd-ua: RhythmSDK-tmzus_iphone-5.3.2.4\r\nCookie: personCookie=0.0.0.0.SYN_IOS0.0.0.0.lZeflZWflZWflZWflZWflZU_vSnax_tmzus_iphone_70.192.67.128;\r\nX-rnmd-mid: xKxvSvZZSQxTe9N4oGzYOA316UND7a4aQZwRtiIg9dM=\r\nX-hardware-platform: iPhone5,2\r\nX-UIDH: NDY0NzM1MTQ3AHXoif1BLna0wSWinR1NlAi848Vz4fR1Kqfy1zDZCO2G\r\nX-Forwarded-For: 70.192.67.128, 10.100.40.253\r\nX-rnmd-trackoptout: no\r\nx-rnmd-pc: 0.0.0.0\r\nX-WEBID: SYN_IOS0.0.0.0.lZeflZWflZWflZWflZWflZU_vSnax_tmzus_iphone_70.192.67.128\r\nX-Forwarded-Host: ads.geo.rnmd.net\r\nX-Forwarded-Server: sccprodads1.scc1.rnmd.net\r\nConnection: close\r\n\r\n";
+
     header_t h_request[] = {
         {"Host", "10.100.60.14:8080"},
         {"Accept-Language", "en-us"},
@@ -60,6 +62,7 @@ test1()
         {"X-Forwarded-Server", "sccprodads1.scc1.rnmd.net"},
         {"Connection", "close"}
     };
+
     
     message_t m_request = {
         GET, ONE_ONE, sizeof(h_request)/sizeof(*h_request), "/coreservices/getAds", "cl=3&appId=tmzus_iphone&mt=display&pl=inpage&w=320&h=50&delivery=xml&t=a14ae24ace1b2b7",
@@ -86,6 +89,7 @@ test1()
         h_reply
     };
     
+        
     http_conversation_t sample1 = {
         {
             request,
@@ -101,7 +105,7 @@ test1()
         }
     };
 
-    parse_conversation(&sample1);
+    int result = parse_conversation(&sample1);
     fprintf(stdout, "Compared sample 1 request: %s\n",
             message_cmp(&sample1.requests[0], &m_request) ? "PASS": "FAIL");
     fprintf(stdout, "Compared sample 1 reply: %s\n",
