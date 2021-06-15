@@ -19,6 +19,7 @@
 #include <netinet/tcp.h>
 
 #include "http_conversation.h"
+#include "parser.h"
 #include "json_format.h"
 #include "xml_format.h"
 
